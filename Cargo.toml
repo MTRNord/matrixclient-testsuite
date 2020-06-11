@@ -1,0 +1,28 @@
+[package]
+name = "mxctest"
+version = "0.1.0"
+authors = ["MTRNord <mtrnord1@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+js_int = "0.1.5"
+rocket = { git = "https://github.com/SergioBenitez/Rocket.git", branch = "async", features = ["tls"] }
+http = "0.2.1"
+log = "0.4.8"
+tokio = { version = "0.2.21", features = ["macros"] }
+serde_json = { version = "1.0.53", features = ["raw_value"] }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0.19"
+anyhow = "1.0"
+
+[dependencies.ruma]
+git = "https://github.com/ruma/ruma"
+rev = "12388c3fbc8ba2a685cbf0fe810c633c827f5b2c"
+features = ["rand", "client-api", "federation-api"]
+
+# These are required only until ruma-events and ruma-federation-api are merged into ruma/ruma
+[patch.crates-io]
+ruma-common = { git = "https://github.com/ruma/ruma", rev = "12388c3fbc8ba2a685cbf0fe810c633c827f5b2c" }
+ruma-serde = { git = "https://github.com/ruma/ruma", rev = "12388c3fbc8ba2a685cbf0fe810c633c827f5b2c" }
